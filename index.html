@@ -327,19 +327,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<h3>contate-nos</h3>
 							<div class="contact-grids wow bounceInRight animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">">
 								<div class="col-md-4 contactgrid">
-									<input type="text" class="text" value=" nome" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = ' nome';}">
+									<input type="text" id="nome" class="text" value="nome" onblur="if (this.value === '') {this.value = 'nome';}">
 								</div>
 								<div class="col-md-4 contactgrid">
-									<input type="text" class="text" value="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'email';}">
+									<input type="text" id="email" class="text" value="email" onblur="if (this.value === '') {this.value = 'email';}">
 								</div>
 								<div class="col-md-4 contactgrid">
-									<input type="text" class="text" value="telefone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'telefone';}">
+									<input type="text" id="telefone" class="text" value="telefone" onblur="if (this.value === '') {this.value = 'telefone';}">
 								</div>
 								<div class="col-md-8 contactgrid1">
-									<textarea onfocus="if(this.value == 'Sua Mensagem') this.value='';" onblur="if(this.value == '') this.value='Sua Mensagem';" >Sua Mensagem</textarea>
+									<textarea id="mensagem" onblur="if (this.value === '') this.value = 'Sua Mensagem';" >Sua Mensagem</textarea>
 								</div>
 								<div class="col-md-4 contactgrid2">
-									<input type="button" value="enviar mensagem">
+									<input type="button" id="mailBtn" value="enviar mensagem">
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -361,6 +361,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="footer-bottom">
 							<p> Copyright &copy;2015  All rights  Reserved | Design by<a href="http://w3layouts.com" target="target_blank">W3Layouts</a></p>
 						</div>
+						<script src="js/email.js" type="text/javascript"></script>
 						<script type="text/javascript">
 						$(document).ready(function() {
 							/*
