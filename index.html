@@ -1,5 +1,4 @@
 <!--
-Au<!--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -23,12 +22,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script type="text/javascript" src="js/move-top.js"></script>
 		<script type="text/javascript" src="js/easing.js"></script>
 		<script type="text/javascript">
-				jQuery(document).ready(function($) {
-							$(".scroll").click(function(event){
-						event.preventDefault();
-						$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
-					});
+			jQuery(document).ready(function ($) {
+				$(".scroll").click(function (event) {
+					event.preventDefault();
+					var pos;
+					if (app.fixed) {
+						pos = app.header;
+					} else {
+						pos = app.header * 2;
+					}
+					$('html,body').animate({scrollTop: $(this.hash).offset().top - pos}, 1200);
 				});
+			});
 		</script>
 		<!---End-smoth-scrolling---->
 		<!------ Light Box ------>
@@ -48,22 +53,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			nav: true,
 			speed: 500,
 		namespace: "callbacks",
-		pager: true,
+		pager: true
 		});
 		});
 		</script>
 		<link rel="stylesheet" type="text/css" href="css/style4.css" />
-		<script type="text/javascript">
-				// Don't use this code on your site
-				var _gaq = _gaq || [];
-				_gaq.push(['_setAccount', 'UA-7243260-2']);
-				_gaq.push(['_trackPageview']);
-				(function() {
-					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-				})();
-		</script>
 		<!--Animation-->
 		<script src="js/wow.min.js"></script>
 		<link href="css/animate.css" rel='stylesheet' type='text/css' />
@@ -134,18 +128,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<!-- //script for menu -->
 								<!-- script-for sticky-nav -->
 								<script>
-								$(document).ready(function() {
-								var navoffeset=$(".header-bottom").offset().top;
-								$(window).scroll(function(){
-								var scrollpos=$(window).scrollTop();
-								if(scrollpos >=navoffeset){
-								$(".header-bottom").addClass("fixed");
-								}else{
-								$(".header-bottom").removeClass("fixed");
-								}
-								});
-								
-								});
+									$(document).ready(function () {
+										window.app = {};
+										var navoffeset = $(".header-bottom").offset().top;
+										app.header = document.getElementsByClassName('header-bottom')[0].offsetHeight;
+										$(window).scroll(function () {
+											var scrollpos = $(window).scrollTop();
+											if (scrollpos >= navoffeset) {
+												$(".header-bottom").addClass("fixed");
+												app.fixed = true;
+											} else {
+												$(".header-bottom").removeClass("fixed");
+												app.fixed = false;
+											}
+										});
+									});
 								</script>
 								<!-- //script-for sticky-nav -->
 							</div>
